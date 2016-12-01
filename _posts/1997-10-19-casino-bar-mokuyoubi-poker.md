@@ -17,4 +17,8 @@ __カジノバー 木曜日 / Casino Bar Mokuyoubi - Poker__
 
 Write up on  [Satellablog](http://superfamicom.org/blog/2014/09/new-rom-dump-has-you-facing-yourself/)
 
+![Casino Bar Mokuyoubi - Poker]({% asset_path 'screenshots/casino-bar-mokuyoubi-poker/0.png' %} "Casino Bar Mokuyoubi - Poker")
+![Casino Bar Mokuyoubi - Poker]({% asset_path 'screenshots/casino-bar-mokuyoubi-poker/1.png' %} "Casino Bar Mokuyoubi - Poker")
+![Casino Bar Mokuyoubi - Poker]({% asset_path 'screenshots/casino-bar-mokuyoubi-poker/2.png' %} "Casino Bar Mokuyoubi - Poker")
+
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VWREvz9PMSw" frameborder="0" allowfullscreen></iframe>
