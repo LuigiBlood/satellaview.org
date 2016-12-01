@@ -1,0 +1,60 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site Settings
+title: Satellaview
+description: BS-X Satellaview - Information, Screenshots, ROMs
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://satellaview.org" # the base hostname & protocol for your site
+paginate: 500
+paginate_path: "/page/:num/"
+locale: en_US
+
+# Build Settings
+exclude:
+  - README.md
+  - Gemfile*
+  - d.php
+  - u.php
+  - roms
+  - node_modules
+markdown: kramdown
+kramdown:
+  auto_ids: true
+  input: GFM
+highlighter: 'pygments'
+permalink: /:year/:title
+gzip_zopfli: true
+gems:
+  - jekyll-assets
+  - jekyll-paginate
+  - jekyll-press
+assets:
+  cachebust: none
+  compress:
+    css: true
+    js: false
+  debug: false
+  digest: false
+  assets:
+    - "*.png"
+    - "*.jpg"
+  js_compressor: uglifier
+  css_compressor: sass
+  gzip:
+    - text/css
+    - application/javascript
+    - image/svg+xml
+    - image/vnd.microsoft.icon
+    - image/x-icon
+  sources:
+    - _assets/files
+jekyll-press:
+  exclude: 'feed.xml' # Exclude files from processing - file name, glob pattern or array of file names and glob patterns
+  js_options: {}      # js minifier options
+  css_options: {}     # css minifier options
+  html_options: {}    # html minifier options

@@ -1,0 +1,44 @@
+---
+layout: default
+---
+{% assign author = site.data.authors[page.author] %}
+<div id="page">
+  <article itemprop="articleBody">
+    <h1>
+      <a href="{{page.url}}" title="{{page.title}}">
+        {{page.title}}
+      </a>
+    </h1>
+    {% if page.date %}
+    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+      {{ page.date | date: "%A" }}
+      {% assign d = page.date | date: "%-d" %}
+      {% assign m = page.date | date: "%B" %}
+      {% case m %}
+        {% when 'April' or 'May' or 'June' or 'July' %}{{ m }}
+        {% when 'September' %}Sept.
+        {% else %}{{ page.date | date: "%b" }}.
+      {% endcase %}
+      {% case d %}
+        {% when '1' or '21' or '31' %}{{ d }}st
+        {% when '2' or '22' %}{{ d }}nd
+        {% when '3' or '23' %}{{ d }}rd
+        {% else %}{{ d }}th
+      {% endcase %},
+      {{ page.date | date: "%Y" }}
+    </time>
+    {% endif %}
+    <h3 class="category">
+      {{page.category}}
+    </h3>
+    {{content}}
+    {% if page.download %}
+    <div class="download">
+      <h2>Download</h2>
+      <p>
+        <a href="/d.php?file={{page.download.filename}}" title="{{page.download.title}}" download>Download {{page.download.title}}</a>
+      </p>
+    </div>
+    {% endif %}
+  </article>
+</div>

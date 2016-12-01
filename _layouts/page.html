@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<div id="page">
+  <article itemprop="articleBody">
+    <h1>
+      <a href="{{page.url}}" title="{{page.title}}">
+        {{page.title}}
+      </a>
+    </h1>
+    <p>
+      {{content}}
+    </p>
+    {% if page.download %}
+    <hr/>
+    <br/>
+    <h2>Download</h2>
+    <p class="author">
+      <a href="/d.php?file={{page.download.filename}}" title="{{page.download.title}}" download>Download {{page.download.title}}</a>
+    </p>
+    {% endif %}
+  </article>
+</div>

@@ -1,0 +1,37 @@
+<header id="banner">
+  <div class="wrapper">
+    <div class="inside">
+      <h1>
+        <a href="/">
+          <span>サテラビュー</span><br/>
+          BS-X Satellaview
+        </a>
+      </h1>
+      <nav>
+        {% for page in site.pages %}
+          {% unless page.skip %}
+            {% if page.title %}
+              <a href="{{page.url | prepend: site.baseurl }}" title="{{page.title}}">
+                {{page.title}}
+              </a>
+            {% endif %}
+          {% endunless %}
+        {% endfor %}
+      </nav>
+    </div>
+    <div class="categories">
+      <a href="#filter=" data-filter="">All</a>
+      {% assign tags_list = site.categories %}
+        {% if tags_list.first[0] == null %}
+          {% for tag in tags_list %}
+            <a href="#filter={{ tag | slugify }}" class="filter" data-filter="{{ tag | slugify }}">{{ tag }} <span>({{ site.tags[tag].size }})</span></a>
+          {% endfor %}
+        {% else %}
+          {% for tag in tags_list %}
+            <a href="#filter={{ tag[0] | slugify }}" class="filter" data-filter="{{ tag[0] | slugify }}">{{ tag[0] }} <span>({{ tag[1].size }})</span></a>
+          {% endfor %}
+        {% endif %}
+      {% assign tags_list = nil %}
+    </div>
+  </div>
+</header>

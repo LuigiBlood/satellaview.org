@@ -1,0 +1,48 @@
+---
+layout: page
+---
+<div id="content">
+{% for post in site.posts %}
+  {% for cat in post.categories %}
+    {% if cat == page.category %}
+      <article>
+        <div class="top">
+          <a href="{{post.url}}" title="{{post.title}}">
+            <img src="{% asset_path '{{post.thumbnail}}' %}" width="256" height="224" alt="{{post.title}}" title="{{post.title}}">
+          </a>
+        </div>
+        <div class="content">
+          <h1>
+            <a href="{{post.url}}" title="{{post.title}}">
+              {{post.title}}
+            </a>
+          </h1>
+          <p class="meta">
+            {{post.category}},
+            <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
+              {{ post.date | date: "%A" }}
+              {% assign d = post.date | date: "%-d" %}
+              {% assign m = post.date | date: "%B" %}
+              {% case m %}
+                {% when 'April' or 'May' or 'June' or 'July' %}{{ m }}
+                {% when 'September' %}Sept.
+                {% else %}{{ post.date | date: "%b" }}.
+              {% endcase %}
+              {% case d %}
+                {% when '1' or '21' or '31' %}{{ d }}st
+                {% when '2' or '22' %}{{ d }}nd
+                {% when '3' or '23' %}{{ d }}rd
+                {% else %}{{ d }}th
+              {% endcase %},
+              {{ post.date | date: "%Y" }}
+            </time>
+          </p>
+          <p class="excerpt">
+            {{post.excerpt}}
+          </p>
+        </div>
+      </article>
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+</div>

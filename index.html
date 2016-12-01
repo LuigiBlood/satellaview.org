@@ -1,0 +1,78 @@
+---
+thumbnail: screenshots/konae-chan-no-dokidoki-pengin-kazoku/5.png
+layout: default
+---
+<div id="content">
+  {% for post in paginator.posts %}
+  {% assign author = site.data.authors[post.author] %}
+  {% capture post_categories %}{% for category in post.categories %}{{category | strip | slugify }} {% endfor %}{% endcapture %}
+  <article data-filter="{{post_categories | strip}}">
+    <div class="top">
+      <a href="{{post.url}}" title="{{post.title}}">
+        <img src="{% asset_path '{{post.thumbnail}}' %}" width="256" height="224" alt="{{post.title}}" title="{{post.title}}">
+      </a>
+    </div>
+    <div class="content">
+      <h1>
+        <a href="{{post.url}}" title="{{post.title}}">
+          {{post.title}}
+        </a>
+      </h1>
+      <h1>
+        <a href="{{post.url}}" title="{{post.title_jp}}">
+          {{post.title_jp}}
+        </a>
+      </h1>
+      <p class="meta">
+        {{post.category}},
+        <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
+          {{ post.date | date: "%A" }}
+          {% assign d = post.date | date: "%-d" %}
+          {% assign m = post.date | date: "%B" %}
+          {% case m %}
+            {% when 'April' or 'May' or 'June' or 'July' %}{{ m }}
+            {% when 'September' %}Sept.
+            {% else %}{{ post.date | date: "%b" }}.
+          {% endcase %}
+          {% case d %}
+            {% when '1' or '21' or '31' %}{{ d }}st
+            {% when '2' or '22' %}{{ d }}nd
+            {% when '3' or '23' %}{{ d }}rd
+            {% else %}{{ d }}th
+          {% endcase %},
+          {{ post.date | date: "%Y" }}
+        </time>
+      </p>
+      <!--<p class="excerpt">
+        {{post.excerpt}}
+      </p>-->
+    </div>
+  </article>
+  {% endfor %}
+
+  {% if paginator.total_pages > 1 %}
+  <div class="pagination">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | replace: '//', '/' }}">&laquo; Prev</a>
+    {% else %}
+      <span>&laquo; Prev</span>
+    {% endif %}
+
+    {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+        <em>{{ page }}</em>
+      {% elsif page == 1 %}
+        <a href="/">{{ page }}</a>
+      {% else %}
+        <a href="{{ site.paginate_path | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | replace: '//', '/' }}">Next &raquo;</a>
+    {% else %}
+      <span>Next &raquo;</span>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
