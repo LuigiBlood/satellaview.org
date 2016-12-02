@@ -9,6 +9,9 @@ layout: default
         {{page.title}}
       </a>
     </h1>
+    {% if page.title_jp %}
+    <h2>{{page.title_jp}}</h2>
+    {% endif %}
     {% if page.date %}
     <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
       {{ page.date | date: "%A" }}

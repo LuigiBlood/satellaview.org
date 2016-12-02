@@ -22,6 +22,8 @@ exclude:
   - u.php
   - roms
   - node_modules
+  - package.json
+  - .DS_Store
 markdown: kramdown
 kramdown:
   auto_ids: true
