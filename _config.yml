@@ -15,6 +15,8 @@ paginate_path: "/page/:num/"
 locale: en_US
 
 # Build Settings
+incremental: true
+profile: true
 exclude:
   - README.md
   - Gemfile*
@@ -24,6 +26,7 @@ exclude:
   - node_modules
   - package.json
   - .DS_Store
+  - package.json
 markdown: kramdown
 kramdown:
   auto_ids: true
@@ -34,6 +37,8 @@ gzip_zopfli: true
 gems:
   - jekyll-assets
   - jekyll-paginate
+  - jekyll-last-modified-at
+  - jekyll-sitemap
 assets:
   cachebust: none
   compress:

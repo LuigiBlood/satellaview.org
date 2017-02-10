@@ -48,10 +48,11 @@ download:
 ## Running Locally
 ```
 bundle install
-bundle exec jekyll serve --trace
+bundle exec jekyll serve --trace --profile
 ```
 
 ## Building for Release
 ```
-JEKYLL_ENV=production bundle exec jekyll build --trace --config _config_production.yml
+ulimit -n 8192
+JEKYLL_ENV=production bundle exec jekyll build --trace --profile --config _config_production.yml
 ```
